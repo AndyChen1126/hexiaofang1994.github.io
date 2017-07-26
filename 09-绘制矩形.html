@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" width="800" height="600" style="border:1px solid red;"></canvas>
+</body>
+<script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+//    ctx.lineWidth=10;
+//
+//    ctx.moveTo(0,5);
+//    ctx.lineTo(300,5);
+//    ctx.lineTo(300,200);
+//    ctx.lineTo(5,200);
+//    ctx.lineTo(5,0);
+//
+//    ctx.stroke();
+
+
+    function drawRect(x,y,width,height,color,lineWidth){
+
+        ctx.beginPath();
+
+        ctx.moveTo(x,y);
+        ctx.lineTo(x+width,y);
+        ctx.lineTo(x+width,y+height);
+        ctx.lineTo(x,y+height);
+        ctx.lineTo(x,y);
+
+        ctx.strokeStyle=color || "black";
+        ctx.lineWidth=lineWidth || 1;
+
+        ctx.stroke();
+
+    }
+
+    drawRect(0,0,300,200,"red",5);
+
+
+
+    drawRect(350,0,300,200,"black",10);
+</script>
+</html>
