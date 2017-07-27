@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        document.querySelector("html").style.fontSize = window.screen.width/10+"px";
+    </script>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+<div class="shouye-start" name='top'>
+    <header class = "base01">
+        <div class = "left">
+            <a href="index.html">
+                <img src="../images/header_logo.png" alt=""></a>
+        </div>
+        <div class = "right">
+            <a href="http://m.manmanbuy.com/?o=download">
+                <img src="../images/header_app.png" alt="">
+            </a>
+        </div>
+    </header>
+    <!--搜索框-->
+    <div class="shouye-search">
+        <input type="search" placeholder='请输入你相比价的商品'>
+        <a href="javascript:void(0)"><span>搜索</span></a>
+    </div>
+    <!--菜单栏-->
+    <div class="shouye-menu">
+        <div class="row"></div>
+    </div>
+    <!--商品列表-->
+    <div class="shouye-catalogue">
+        <!--商品列表通栏-->
+        <div class="catalogue-top">
+            <a href="moneyctrl.html">
+                <span>超值折扣推荐</span>
+                <img src="http://www.zuyushop.com/wap/images/more.png" alt="">
+            </a>
+        </div>
+        <!--商品列表内容-->
+        <div class="catalogue-content">
+        </div>
+    </div>
+    <!--更多优惠-->
+    <div class="shouye-favorable">
+        <a href="moneyctrl.html">更多优惠信息</a>
+    </div>
+    <!--品牌排行-->
+    <div class="shouye-brand">
+        <a href="brandTitle.html">
+            <span>品牌排行</span>
+            <img src="http://www.zuyushop.com/wap/images/more.png" alt="">
+        </a>
+    </div>
+    <div class="shouye-fooder">
+        <div class="fooder-top">
+            <span><a href="javascript:void(0)">登录</a></span>
+            <span><a href="javascript:void(0)">注册</a></span>
+            <span>
+                <a href="#top" class='glyphicon glyphicon-arrow-up'>返回顶部</a>
+            </span>
+        </div>
+        <div class="fooder-buttom">
+            <p>
+                    <span>
+                        <a href="http://m.manmanbuy.com/?o=download">手机APP下载</a>
+                    </span>
+                <span>
+                        <a href="http://m.manmanbuy.com">慢慢买手机版--</a>掌上比价平台
+                    </span>
+            </p>
+            <p>
+                <a href="http://m.manmanbuy.com/">
+                    m.manmanbuy.com
+                </a>
+            </p>
+        </div>
+    </div>
+    <div class ="base-food-back">
+        <div class ="base-food-back-top">
+            <a href="http://m.manmanbuy.com/?o=download">
+                <img src="../images/TB2WepTeb1J.eBjSszcXXbFzVXa_!!379516416.png" alt="">
+            </a>
+        </div>
+        <div class ="base-food-back-bot">
+            <a href="#top" class = "glyphicon glyphicon-circle-arrow-up">
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../js/jquery-1.12.4.min.js"></script>
+<script src="../js/template-web.js"></script>
+<!--菜单栏模板-->
+<script type='text/html' id='menu-moban'>
+    {{each result}}
+        <div class="pic" style='height:100px;'>
+            <a href={{$value.titlehref}}>
+                {{$value.img}}
+                <p>{{$value.name}}</p>
+            </a>
+        </div>
+    {{/each}}
+</script>
+
+<!--商品列表模板-->
+<script type="text/html" id="catalogue-moban">
+    {{each result}}
+    <a href="moneyctrl.html">
+        <div class="chunk">
+            <div class="chunk-left">
+                {{#$value.productImgSm}}
+            </div>
+            <div class="chunk-right">
+                <div class="right-top">
+                    <p>{{$value.productName}}</p>
+                    <p>{{$value.productPinkage}}</p>
+                </div>
+                <div class="right-buttom">
+                    <span>{{$value.productFrom}}</span>
+                    <span>|</span>
+                    <span>{{$value.productTime}}</span>
+                    <span>{{$value.productComCount}}</span>
+                </div>
+            </div>
+        </div>
+    </a>
+    {{/each}}
+</script>
+
+<script>
+    $(function () {
+        //菜单栏
+         var pic=1;
+        $.ajax({
+            url:"http://139.199.192.48:9090/api/getindexmenu",
+            data:{
+                indexmenuId: pic,
+                name: "name",
+                img: 'img',
+                titlehref: "titlehref",
+            },
+            success:function (data) {
+                console.log(data);
+                var result=template('menu-moban',data);
+                result = result.replace(/&#60;/g, "<");
+                result = result.replace(/&#62;/g, ">");
+                result = result.replace(/&#34;/g, "'../");
+                $('.shouye-menu .row').html(result);
+                $('.pic:eq(7)').nextAll().hide();
+                $('.pic:eq(7) a').attr('href','javascript:void(0)')
+                $('.pic:eq(7)').click(function() {
+                    console.log(123);
+                    if($(this).nextAll().css('display')=='none'){
+                        console.log(123);
+                        $('.pic:eq(7)').nextAll().show();
+                    }else {
+                        $('.pic:eq(7)').nextAll().hide();
+                    }
+                })
+            }
+        })
+        //商品列表
+        $.ajax({
+            url:'http://139.199.192.48:9090/api/getmoneyctrl',
+            data:{
+                productId:'',
+                productName: "productName",
+                productPinkage: "productPinkage",
+                productFrom: "productFrom",
+                productTime: "productTime",
+                productImgSm: "productImgSm",
+                productComCount: "productComCount"
+            },
+            success:function (data) {
+                var result=template('catalogue-moban',data);
+//                result = result.replace(/&#60;/g, "<");
+//                result = result.replace(/&#62;/g, ">");
+//                result = result.replace(/&#34;/g, "'");
+                $('.catalogue-content').html(result);
+            }
+        })
+   })
+</script>

@@ -1,0 +1,58 @@
+@import "normalize6.0";
+@import "base";
+.national{
+  //主体部分
+  width: p2r(375);
+  height: 100%;
+  overflow: hidden;
+  .nat_disc{
+    width: 50%;
+    height: p2r(265);
+    list-style: none;
+    //display: block;
+      .nat_disc_ul{
+        width: p2r(375);
+        height: p2r(265);
+        .nd_box{
+          width: 50%;
+          //width:p2r(187.5);
+          //height:p2r(265);
+          a{
+            display: block;
+            overflow: hidden;
+            padding: 0 8px;
+            text-decoration: none;
+            .pic{
+              width:p2r(140);
+              height:p2r(140);
+              margin: 10px auto;
+              img{
+                width: 100%;
+              }
+            }
+            .title{
+              font-size: p2r(14);
+              height: p2r(36);
+              line-height: p2r(18);
+              font-weight: bold;
+              color:black;
+              overflow: hidden;
+            }
+            .price{
+              font-size: p2r(14);
+              height: p2r(18);
+              color:red;
+              overflow: hidden;
+              margin: 10px 0;
+            }
+            .mall{
+              font-size: p2r(12);
+              color:gray;
+            }
+          }
+      }
+
+      }
+
+  }
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>国内折扣</title>
+    <script>
+        document.querySelector("html").style.fontSize = window.screen.width / 10 + "px";
+    </script>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/inlanddiscount_details.css">
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!--公共样式头部-->
+    <header class="base02">
+        <div class="left">
+            <a href="./inlanddiscount.html" class="glyphicon glyphicon-menu-left"></a>
+        </div>
+        <div class="center">
+            <h1>国内折扣</h1>
+        </div>
+        <div class="right">
+            <a href="javascript:;">
+            <img src="../images/header_app.png" alt="">
+        </a>
+        </div>
+    </header>
+    <!--主体部分大容器-->
+    <main class="container">
+        <!--<div class="centent">
+            <div class="top">
+                <h3>儿童节一家三口大码亲子装夏装全家装纯棉短袖T恤家庭装</h3>
+                <h4>15元（券后）</h4>
+                <div class="info">
+                    <span>天猫商城</span><span>07-05 09:07</span><span>qq_377648yn / 慢慢买</span>
+                </div>
+                <div class="cen">
+                    <div class="ico">
+                        <a href="javascript:void(0);"></a> 儿童节一家三口大码亲子装儿童售价45元，现可领取，券后实付15元，成人30元包邮可以当亲子装，也可以当情侣装，暑假出行回头率高，醒目的孩子也方便你关注孩子，更安全。
+                    </div>
+                    <div class="pic">
+                        <img src="http://img4.tbcdn.cn/tfscom/i3/T12JSLXdXoXXcSb8g9_104347.jpg" alt="">
+                    </div>
+                </div>
+                <div class="bigPic">
+                    <img src="http://img4.tbcdn.cn/tfscom/i3/T12JSLXdXoXXcSb8g9_104347.jpg" alt="">
+                </div>
+                <div class="golink">
+                    <a href="javascript:void(0);">前来购买</a>
+                </div>
+            </div>
+            <div class="bottom">
+                <h2>发表评论</h2>
+                <div class="form">
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <div class="form-b">
+                        <a href="javascript:void(0);">发表评论</a>
+                    </div>
+                </div>
+                <h3>最新评论</h3>
+                <div class="new">
+                    <div class="left">
+                        <img src="http://bbs.manmanbuy.com/images/face/none.gif" alt="">
+                    </div>
+                    <div class="right">
+                        <div class="top">
+                            <p>手机端网友183***70</p>
+                            <p>2017/7/5 10:26:44</p>
+                        </div>
+                        <div class="bottom">
+                            爱上打生打死打算大叔大叔的
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    </main>
+    <!--导航链接-->
+    <div id = "nav">
+        <a href="./index.html">首页</a>
+        <span>&gt;</span>
+        <a href="./inlanddiscount.html">国内折扣</a>
+        <span>&gt;</span>
+    </div>
+    <!--底部样式-->
+    <fooder>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-4">
+                    <a href="javascript:;">登录</a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="javascript:;">注册</a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="javascript:;">
+                    <img src="../images/top.jpg" alt="">
+                    <p>返回顶部</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </fooder>
+    <div class="base-food">
+        <p>
+            <a href="javascript:;">手机APP下载</a>
+            <a href="javascript:;">慢慢卖手机版</a> "--掌上比价平台"
+        </p>
+        <p>m.manmanbuy.com</p>
+    </div>
+    <!--底部返回-->
+    <div class="base-food-back">
+        <div class="base-food-back-top">
+            <a href="javascript:;">
+            <img src="../images/TB2WepTeb1J.eBjSszcXXbFzVXa_!!379516416.png" alt="">
+        </a>
+        </div>
+        <div class="base-food-back-bot">
+            <a href="javascript:scroll(0,0);" class="glyphicon glyphicon-circle-arrow-up">
+        </a>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!--导入jq-->
+<script src="../js/jquery-1.12.4.min.js"></script>
+<!--导入模板引擎-->
+<script src="../js/template-web.js"></script>
+<!--定义模板-->
+<script type="text/html" id="muban">
+    {{each result}}
+    <div class="centent">
+        <div class="top">
+            <h3>{{@$value.productName}}</h3>
+            <h4>15元（券后）</h4>
+            <div class="info">
+                <span>{{@$value.productFrom}}</span><span>{{@$value.productTime}}</span><span>{{@$value.productTips}} / 慢慢买</span>
+            </div>
+            <div class="cen">
+                <div class="ico">
+                    <a href="javascript:void(0);"></a>{{@$value.productPrice}}{{@$value.productInfo}}
+                </div>
+                <div class="pic">
+                    <!--<img src="{{#$value.productImg}}" alt="">-->
+                    {{@$value.productImg}}
+                </div>
+            </div>
+            <div class="bigPic">
+                <!--<img src="{{#$value.productImg}}" alt="">-->
+                {{@$value.productImg}}
+            </div>
+            <div class="golink">
+                <a href="javascript:void(0);">前来购买</a>
+            </div>
+        </div>
+        <div class="bottom">
+            {{@$value.productComment}}
+            <div class="list">
+                <ul>
+                    <li class="ui-border-b">
+                        <div class="userimg">
+                            <img src="http://bbs.manmanbuy.com/images/face/none.gif">
+                        </div>
+                        <div class="con">
+                            <div class="name clearfix">
+                                <div class="username">xumeng0102</div>
+                                <div class="time">2016/10/25 14:08:23</div>
+                            </div>
+                            <div class="content">买了</div>
+                        </div>
+                    </li>
+                    <li class="ui-border-b">
+                        <div class="userimg">
+                            <img src="http://home.manmanbuy.com/upface/face/1474348687_162.jpg">
+                        </div>
+                        <div class="con">
+                            <div class="name clearfix">
+                                <div class="username">Yan1994</div>
+                                <div class="time">2016/10/25 14:03:25</div>
+                            </div>
+                            <div class="content">商品非常不错</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</script>
+
+<!--自己写的js-->
+<script>
+    $(function () {
+        $.ajax({
+            url: "http://139.199.192.48:9090/api/getdiscountproduct",
+            data: {
+                productid: localStorage.TimeID,
+            },
+            success: function (data) {
+                console.log(data);
+                var result = template("muban",data);
+                console.log(result);
+                $(".container").append(result);
+            }
+        })
+    })
+</script>
+<script>
+
+</script>

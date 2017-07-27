@@ -1,0 +1,279 @@
+@import 'normalize6.0';
+// 再导入 自己的
+@import 'base';
+// 定义变量 京东红
+@function p2r($size) {
+  @return ($size/37.5*1rem);
+}
+*{
+  margin:auto;
+}
+html,body,.coupoon-listKfc-layout{
+  width: 100%;
+  height: 100%;
+}
+/*头部区域*/
+.base02{
+  width:100%;
+  height:p2r(44);
+  background-color: #f4483e;
+  display: flex;
+  justify-content: space-between;
+  padding-right:p2r(8);
+  .left{
+    width: p2r(50);
+    height: p2r(44);
+    a{
+      height: 100%;
+      width: 100%;
+      display: block;
+      line-height: p2r(44);
+      font-size: p2r(17);
+      color:#fff;
+      padding-left:p2r(10);
+      text-decoration:none;
+    }
+  }
+  .center{
+    height:100%;
+    h1{
+      font-size: p2r(20);
+      color:#fff;
+      font-weight: bold;
+      line-height: p2r(5);
+    }
+  }
+  .right{
+    a{
+      width: p2r(50);
+      height: p2r(44);
+      display: block;
+      img{
+        width: 60%;
+        height: 70%;
+        margin:p2r(7) auto;
+      }
+    }
+  }
+}
+/*内容区域*/
+.coupon-list-kft{
+  .mobile-coupon{
+    font-size:p2r(12);
+    text-align: center;
+    color:#999;
+    margin-top:p2r(8);
+    margin-bottom:p2r(8);
+  }
+  .coupon-list-kftContent{
+    width: 100%;
+    .coupon-listKfc{
+      width: 100%;
+      li{
+        a{
+          display: block;
+          width: 100%;
+          display:flex;
+          padding:p2r(10);
+          padding-right:0;
+          text-decoration:none;
+          .kftcLeft-pic{
+            width:p2r(100);
+            height:p2r(80);
+            margin-right:p2r(10);
+            img{
+              width:p2r(100);
+              height:p2r(80);
+            }
+          }
+          .kfcRight-content{
+           flex:1;
+            padding-right:p2r(30);
+            position: relative;
+           p{
+             font-size:p2r(14);
+             margin:0;
+           }
+            p:nth-of-type(2){
+              font-weight:bold;
+            }
+          }
+          span{
+            font-size:p2r(18);
+            position:absolute;
+            right: 0;
+            top:50%;
+            margin-top:p2r(-9);
+          }
+        }
+      }
+    }
+  }
+}
+//返回首页
+.coupon-back{
+  width: 100%;
+  height:p2r(36);
+  border-top:1px solid #cccccc;
+  border-bottom:1px solid #cccccc;
+  padding-left:p2r(8);
+  line-height:p2r(36);
+  margin-bottom:p2r(25);
+  background:linear-gradient(to bottom,rgba(254,254,254,1),rgba(237,237,237,1));
+  //background-color: #ededed;
+  a{
+    font-size: p2r(14);
+    color: #000;
+  }
+  span{
+    font-size: p2r(14);
+    color: #000;
+  }
+}
+//底部通用样式
+fooder{
+  height: p2r(35);
+  width: 100%;
+  background-color: pink;
+  background-color: #efefef;
+  .container-fluid{
+    width: 100%;
+    height: auto;
+    background-color: #efefef;
+    .row{
+      border:1px solid #c4c4c4;
+      border-right:none;
+      border-left:none;
+      height: p2r(35);
+      overflow: hidden;
+      div{
+
+        border-right:1px solid #c4c4c4;
+      }
+    }
+    a{
+      line-height: p2r(35);
+      color:#000;
+    }
+    div:nth-of-type(1){
+      height:p2r(35);
+
+      text-align: center;
+    }
+    div:nth-of-type(2){
+      height:p2r(35);
+
+      text-align: center;
+    }
+    div:nth-of-type(3){
+      height:p2r(35);
+      border-right:0;
+      a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img{
+          height: p2r(15);
+          width: p2r(15);
+          margin-top:p2r(-10);
+        }
+        p{
+          border-bottom:1px solid gray;
+        }
+      }
+    }
+  }
+}
+.base-food{
+  height:p2r(58);
+  width: 100%;
+  border: 1px solid gray;
+  border: none;
+  padding-top:p2r(10);
+  text-align: center;
+  background-color: #efefef;
+  p{
+    margin:0 auto;
+    a:first-child{
+      color:#f00;
+    }
+    a:nth-of-type(2){
+      color:gray;
+    }
+  }
+}
+.base-food-back{
+  .base-food-back-top{
+    position: fixed;
+    bottom:p2r(60);
+    right: 0px;
+    width: p2r(60);
+    height:p2r(67);
+    a:nth-of-type(1){
+      width: 100%;
+      height: 100%;
+      display: block;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .base-food-back-bot{
+    width: p2r(44);
+    height: p2r(44);
+    position:fixed;
+    bottom:p2r(10);
+    right:p2r(8);
+
+    a:nth-of-type(1){
+      font-size: 40px;
+      line-height: p2r(44);
+      color: gray;
+    }
+  }
+
+
+}
+/*遮罩层区域*/
+.galleryOverlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  transition: 1s;
+
+  .galleryOverlay-container{
+    margin:50% auto;
+  .picture{
+    img{
+      width:p2r(200);
+      height:p2r(160);
+      transform:translateY(50%);
+      margin:0 auto;
+    }
+  }
+  span{
+    transform:translateY(-50%);
+    background-color:rgba(0,0,0,0.6);
+    width:p2r(40);
+    height:p2r(50);
+    border-radius:p2r(5);
+    text-align: center;
+  }
+  .coupon-arrow-left{
+    font-size:p2r(40);
+    color:#fff;
+    float:left;
+  }
+  .coupon-arrow-right{
+    font-size:p2r(40);
+    color:#fff;
+    float:right;
+  }
+}
+}

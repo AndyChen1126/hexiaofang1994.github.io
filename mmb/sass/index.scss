@@ -1,0 +1,308 @@
+// 导入的顺序
+// 因为我们可能在base中会修改样式
+@import 'normalize6.0.scss';
+// 再导入 自己的
+@import 'base.scss';
+.shouye-start{
+  a{
+    text-decoration: none;
+  }
+
+}
+//首页搜索框
+.shouye-search{
+  width:100%;
+  height:p2r(48);
+  border-bottom: 1px solid #e6e6e6;
+  padding-left: p2r(9);
+  display: flex;
+  padding-top:p2r(8);
+  margin-bottom: p2r(13);
+  padding-right:p2r(10);
+  input{
+    width:100%;
+    height:p2r(30);
+    background-color: #f1f1f1;
+    outline:none;
+    border-radius: p2r(20);
+    margin-right:p2r(7);
+    padding-left:p2r(20);
+    color:#a9a9a9;
+    border:none;
+  }
+ a{
+    width:p2r(64);
+    height:p2r(30);
+    display: inline-block;
+    background-color: #ff841d;
+    border-radius: p2r(20);
+    font-size:p2r(15);
+    text-align: center;
+    span{
+      width:100%;
+      height:100%;
+      line-height:p2r(30);
+      color:white;
+    }
+  }
+}
+//菜单栏
+.shouye-menu{
+  //border: 5px solid #ed1c24;
+  padding-bottom: p2r(16);
+  font-size: p2r(14);
+  .row{
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 0;
+    .pic{
+      width:25%;
+      height:p2r(70);
+      a{
+        display: block;
+        text-align: center;
+        img{
+          margin: 0 auto  ;
+          padding-top:p2r(15);
+          width: p2r(50);
+        }
+        p{
+          padding-top:p2r(10)
+        }
+      }
+    }
+  }
+}
+//商品列表
+.shouye-catalogue{
+  //商品通栏
+  .catalogue-top{
+    height:p2r(36);
+    background-color: #ff9c1c;
+    font-size: p2r(16);
+    line-height: p2r(36);
+    padding:0 p2r(10);
+    a{
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      span{
+        color:white;
+        font-weight: 600;
+      }
+      img{
+        width: p2r(22);
+        height: p2r(22);
+        margin-top: p2r(7);
+      }
+    }
+  }
+  //商品列表
+.catalogue-content{
+    .chunk{
+      height:p2r(110);
+      wigth:100%;
+      padding:p2r(10) p2r(10);
+      display: flex;
+      border-bottom: 1px solid #e6e6e6;
+      .chunk-left{
+        img{
+          display: inline-block;
+          width:p2r(100);
+          height:p2r(85)
+        }
+      }
+      .chunk-right{
+        width:100%;
+        padding-left:p2r(10);
+        padding-bottom: p2r(14);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .right-top{
+            font-size: p2r(14);
+            color:#333333;
+          p{
+            margin: 0;
+          }
+        }
+        .right-buttom{
+          font-size: p2r(12);
+          color:#a1a1a1;
+          span:nth-child(4){
+              color:red;
+              float: right;
+          }
+        }
+      }
+    }
+}
+}
+//更多优惠
+.shouye-favorable{
+  background-color: #F4F4F4;
+  padding:p2r(10) p2r(10) p2r(15);
+  a{
+      display: block;
+      width: 100%;
+      background-color: white;
+      height:p2r(30);
+      line-height:p2r(30);
+      font-size: p2r(14);
+      text-align: center;
+      border-radius:p2r(20);
+      border: 1px solid #F4F4F4;
+  }
+}
+//品牌排行
+.shouye-brand{
+  height:p2r(36);
+  background-color: #ff9c1c;
+  font-size: p2r(16);
+  line-height: p2r(36);
+  padding:0 p2r(10);
+  a{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    span{
+      color:white;
+      font-weight: 600;
+    }
+    img{
+      width: p2r(22);
+      height: p2r(22);
+      margin-top: p2r(7);
+    }
+  }
+}
+//首页底部
+.shouye-fooder{
+  background-color: #f1f1f1;
+  padding-top:p2r(25);
+  .fooder-top{
+    border-bottom: 1px solid #c4c4c4;
+    border-top: 1px solid #c4c4c4;
+    display: flex;
+    height:p2r(36);
+    span{
+      display: inline-block;
+      text-align: center;
+      a{
+        font-size: p2r(14);
+        display: block;
+        line-height: p2r(36);
+      }
+      a:visited {color:#5a5a5a};
+    }
+    span:nth-child(1){
+      width:30%;
+    }
+    span:nth-child(2){
+      width:30%;
+      border-left: 1px solid #c4c4c4;
+      border-right: 1px solid #c4c4c4;
+    }
+    span:nth-child(3){
+      width:40%;
+    }
+  }
+  .fooder-buttom{
+    padding:p2r(16);
+    p{
+      font-size: p2r(12);
+      text-align: center;
+      span{
+        color:#747474;
+      }
+      span:nth-child(1) a{
+        color:red;
+      }
+      span:nth-child(2) a{
+        color:#747474;
+      }
+    }
+  }
+}
+
+
+////商城导航页面//////////
+//头部
+.sitenav-top{
+  height:p2r(44);
+  background-color: #ff841d;
+  padding-left:p2r(10);
+  padding-right:p2r(20);
+  display: flex;
+  .left{
+    height:100%;
+    width:p2r(25);
+    a{
+      display: block;
+      width:100%;
+      height:100%;
+      line-height: p2r(44);
+      font-size: p2r(20);
+      color:white;
+    }
+  }
+  h2{
+    display: inline-block;
+    flex: 1;
+    text-align: center;
+    font-size: p2r(20);
+    font-weight: 600;
+    color:white;
+    line-height: p2r(10);
+  }
+  .right{
+        padding-top:p2r(5);
+      a{
+        display: inline-block;
+        img{
+          width: p2r(30);
+        }
+      }
+  }
+}
+//主题
+.sitenav-content{
+    padding:p2r(12) p2r(40) p2r(20);
+  .sitenav-box{
+    border: 1px solid #bfbfbf;
+    background-color: #f4f4f4;
+    display:inline-block;
+    margin-bottom: p2r(5);
+    a{
+      text-decoration: none;
+    }
+    .box-right{
+      padding-left:p2r(5);
+    }
+    a{
+      padding:p2r(11) p2r(8);
+      height:100%;
+      display: flex;
+      font-size: p2r(14);
+      color:#000;
+    }
+  }
+}
+.sitenav-return{
+  border-bottom: 1px solid #ccc;
+  border-top:  solid 1px #ebebeb;
+  p{
+    height:p2r(38);
+    font-size: p2r(14);
+    line-height:p2r(38);
+    padding-left:p2r(10);
+    background: -webkit-gradient(linear,0 0,0 100%,from(#ffffff),to(#ebebeb));
+    a{
+      color:#000;
+    }
+  }
+  .i{
+    height:p2r(24);
+  }
+}

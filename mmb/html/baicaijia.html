@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!--设置p2r-->
+    <script>
+        document.querySelector("html").style.fontSize = window.screen.width / 10 + "px";
+    </script>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--导入swipwe css-->
+    <link rel="stylesheet" href="../lib/swiper/swiper.min.css">
+    <!--<link rel="stylesheet" href="../css/index.css">-->
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--白菜页面样式-->
+    <link rel="stylesheet" href="../css/Chinese.css">
+    <!--导入jq-->
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <!--导入swiper js-->
+    <script src="../lib/swiper/swiper.min.js"></script>
+    <!--导入模板引擎-->
+    <script src="../js/template-web.js"></script>
+    <!--导入-->
+
+    <!--创建模板引擎-->
+    <script type="text/html" id="swiperMuban">
+        {{each result}}
+        <div class="swiper-slide"><a href="javascript:void(0)">{{$value.title}}</a></div>
+        {{/each}}
+    </script>
+
+    <!--创建第二个模板-->
+    <script type="text/html" id="mianmuban">
+        {{each result}}
+        <span class="centent">
+                <div class="left">
+                    {{#$value.productImg}}
+                </div>
+                <div class="right">
+                    <div class="top">
+                        <h2>{{#$value.productName}}</h2>
+                        <p>{{#$value.productPrice}}</p>
+                    </div>
+                    <div class="center">{{#$value.productCouponRemain}}</div>
+                    <div class="bottom">
+                        <div class="quan">{{#$value.productCoupon}}</div>
+                        <div class="xiadan">{{#$value.productHref}}</div>
+                    </div>
+                </div>
+            </span> {{/each}}
+    </script>
+</head>
+
+<body>
+    <!--顶部通用样式-->
+    <header class="base02">
+        <div class="left">
+            <a href="./index.html" class="glyphicon glyphicon-menu-left">
+        </a>
+        </div>
+        <div class="center">
+            <h1>白菜价 - 淘宝内部接口</h1>
+        </div>
+        <div class="right">
+            <a href="javascript:;">
+            <img src="../images/header_app.png" alt="">
+        </a>
+        </div>
+    </header>
+    <!--中间导航栏-->
+    <div class="chinese-nav">
+        <!--swiper中间导航栏-->
+        <div class="swiper-container" id="chineseSwiper-container">
+            <div class="swiper-wrapper">
+            </div>
+        </div>
+        <div class="chinese-search"></div>
+    </div>
+    <!--搜索框-->
+    <div class="search">
+        <input type="text" placeholder="搜索商品即可查内部卷">
+        <a href="javascript:void(0);">搜索</a>
+    </div>
+    <!--主体样式-->
+    <div class="chinese-contrain">
+    </div>
+
+</body>
+
+</html>
+<script>
+    $(function () {
+
+        // swiper js
+        var chineseSwiper = new Swiper('#chineseSwiper-container', {
+            direction: 'horizontal',
+            slidesPerView: 'auto',
+            mousewheelControl: true,
+            freeMode: true,
+            roundLengths: true,
+            observer:true,//修改swiper自己或子元素时，自动初始化swiper
+            observeParents:true,//修改swiper的父元素时，自动初始化swiper
+        })
+
+        //  请求标题数据
+        $.ajax({
+            url: "http://139.199.192.48:9090/api/getbaicaijiatitle",
+            success: function (data) {
+                // console.log(data);
+                var result = template("swiperMuban", data);
+                // console.log(result);
+                $("#chineseSwiper-container .swiper-wrapper").append(result);
+            }
+        })
+
+        // 调用下面的方法请求主体数据
+        getData();
+
+        // 监听滚轮事件
+        $(window).scroll(function () {
+            var currentScroll = $(document).scrollTop();
+            // console.log(currentScroll);
+            var currentHeight = $("body").height();
+            // console.log(currentHeight);
+            if (currentScroll >= $(document).height()-$(window).height()) {
+                console.log(123);
+                getData();
+            }
+        })
+    })
+
+
+
+    
+    var num = 1;
+    
+    function getData() {
+        $.ajax({
+            url: "http://139.199.192.48:9090/api/getbaicaijiaproduct",
+            data: {
+                titleid: num
+            },
+            success: function (data) {
+                num++;
+                console.log(data);
+                var resutl = template("mianmuban", data);
+                // console.log(resutl);
+                $(".chinese-contrain").append(resutl);
+                for(var i = 0 ; i < data.result.length; i++){
+                $(".chinese-contrain").find(".centent").eq(i).attr("data-one",data.result[i].productId);
+                $(".chinese-contrain").find(".centent").eq(i).attr("data-two",data.result[i].titleId); 
+            }
+            }
+        })
+    }
+    var flag = 1;
+    // 点击时切换数据
+    $("#chineseSwiper-container").on("click", 'a', function () {
+        $(this).addClass("hover");
+        $(this).parent().siblings().children().removeClass("hover");
+        var containerID = $(this).parent().index();
+        $.ajax({
+            url:"http://139.199.192.48:9090/api/getbaicaijiaproduct",
+            data:{
+                titleid : containerID
+            },
+            success:function(data){
+                console.log(data);
+                var resutl = template("mianmuban", data);
+                // console.log(resutl);
+                $(".chinese-contrain").html(resutl);
+            }
+        })
+    })
+
+    // 点击搜索框弹出搜索框
+    $(".chinese-search").click(function(){
+        
+        if(flag == 1){
+            $(".search").show();
+            flag--;
+            return;
+        }
+        if(flag == 0){
+            $(".search").hide();
+            flag++;
+            return;
+        }
+    })
+
+
+
+
+    // 点击span事件
+    $(".chinese-contrain").on("click",".centent",function(){
+        window.location.href = "baicaijia-list.html";
+        localStorage.done=$(this).attr('data-one')
+        localStorage.dtwo=$(this).attr('data-two')
+    })
+
+
+
+
+</script>
+
+
+<!--小贱贱证据-->
+<!--// 请求数据封装成方法
+    // function getData() {
+    //     $.ajax({
+    //         url: "http://139.199.192.48:9090/api/getbaicaijiaproduct",
+    //         data: {
+    //             titleid: 1
+    //         },
+    //         success: function (data) {
+    //             console.log(data);
+    //             var resutl = template("mianmuban", data);
+    //             $(".chinese-contrain").html(resutl);
+    //             $('.centent .left').each(function (index, ele) {
+    //                 $(ele).append(data.result[index].productImg);
+    //             });
+    //             $('.centent .top h2').each(function (index, ele) {
+    //                 $(ele).append(data.result[index].productName);
+    //             });
+    //             $('.centent .top p').each(function (index, ele) {
+    //                 $(ele).append(data.result[index].productPrice);
+    //             });
+    //             $('.centent .center').each(function (index, ele) {
+    //                 $(ele).append(data.result[index].productCouponRemain);
+    //             });
+    //             $('.bottom .quan').each(function (index, ele) {
+    //                 $(ele).append(data.result[index].productCoupon);
+    //             });
+    //             $('.bottom .lianjie').each(function (index, ele) {
+    //                 $(ele).append(data.result[index].productHref);
+    //             });
+    //         }
+    //     })
+    // }-->

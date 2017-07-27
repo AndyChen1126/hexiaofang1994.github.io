@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        document.querySelector("html").style.fontSize = window.screen.width / 10 + "px";
+    </script>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../css/index.css">
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/brandTitle.css">
+    <title>Title</title>
+</head>
+<body>
+<!--头部-->
+<header class="base01">
+    <div class="left">
+        <a href="index.html">
+            <img src="../images/header_logo.png" alt=""></a>
+    </div>
+    <div class="right">
+        <a href="javascript:;">
+            <img src="../images/header_app.png" alt="">
+        </a>
+    </div>
+</header>
+<!--搜索-->
+<div class="search">
+    <input type="search" placeholder="请输入你想比价的商品">
+    <input type="button" value="搜索">
+</div>
+<!--导航-->
+<div id="nav">
+    <a href="index.html">首页</a>
+    <span>&gt;</span>
+    <a href="brandTitle.html">全部分类</a>
+    <span>&gt;</span>
+    <a href="javascript:;" class="dianshi"></a>
+</div>
+<!--热门品牌-->
+
+<!--内容区-->
+<div class="brandName-items">
+    <p></p>
+
+</div>
+<!--销量-->
+<div class="sales">
+    <p>平板电脑销量排行榜</p>
+
+</div>
+<!--评论区-->
+<div class="discuss">
+    <p>平板电脑最新评论区</p>
+    <div class="media">
+        <div class="media-top">
+            <div class="media-left">
+                <a href="javascript:;">
+                    <img src="../images/Thumb_2015030014442314218.jpg" alt="">
+                </a>
+            </div>
+            <div class="media-right">
+                <a href="javascript:;">东芝(TOSHIBA)43U66EBC 43英寸 4K智能液晶电视</a>
+            </div>
+        </div>
+        <div class="media-bot">
+            <div class="plbox">
+
+            </div>
+            <div class="media-bot-top">
+
+                <span>2313: <span>★★★★★</span></span>
+                    <span>2017/2/2</span>
+            </div>
+                <p>
+                电视是挺好的，不是很薄也不是很厚，画面挺清晰的，但是发货
+           速度超级无敌慢啊，半个月了才发货，超级无语，问客服又推来推去的，郁闷，问了好多次，催了好几回，才发的货，平时家里的大小家电都是在京东买的、唯有这次是出现这种情况，无语了</p>
+            </div>
+    </div>
+
+</div>
+<!--底部-->
+<fooder>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4">
+                <a href="javascript:;">登录</a>
+            </div>
+            <div class="col-xs-4">
+                <a href="javascript:;">注册</a>
+            </div>
+            <div class="col-xs-4">
+                <a href="javascript:;">
+                    <img src="../images/top.jpg" alt="">
+                    <p>返回顶部</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</fooder>
+<div class="base-food">
+    <p>
+        <a href="javascript:;">手机APP下载</a>
+        <a href="javascript:;">慢慢卖手机版</a>
+        "--掌上比价平台"
+    </p>
+    <p>m.manmanbuy.com</p>
+</div>
+<div class="base-food-back">
+    <div class="base-food-back-top">
+        <a href="javascript:;">
+            <img src="../images/TB2WepTeb1J.eBjSszcXXbFzVXa_!!379516416.png" alt="">
+        </a>
+    </div>
+
+    <div class="base-food-back-bot">
+        <a href="javascript:scroll(0,0);" class="glyphicon glyphicon-circle-arrow-up">
+        </a>
+    </div>
+</div>
+</body>
+</html>
+<script src="../js/jquery-1.12.4.min.js"></script>
+<script src="../lib/template/template-web.js"></script>
+<!--创建模板-->
+<script type="text/html" id="someBrand">
+    {{each result}}
+    <div class="item">
+        <div class="left">
+            <p class="num"></p>
+            <div class="bot">
+                <a href="brandTitle03.html">{{$value.brandName}}</a>
+                <p>{{$value.brandInfo}}</p>
+            </div>
+        </div>
+        <div class="right">
+            <a href="#" class="glyphicon glyphicon-menu-right"></a>
+        </div>
+    </div>
+    {{/each}}
+</script>
+<script type="text/html" id="someMedia">
+    {{each result}}
+    <div class="media">
+        <div class="media-left">
+            <a href="javascript:;">
+                <img src="" alt="">
+            </a>
+        </div>
+        <div class="media-right">
+            <a href="javascript:;">{{$value.productName}}</a>
+            <p><span>{{$value.productPrice}}</span><span>★★★★★</span></p>
+            <p><span>{{$value.productQuote}}</span><span>全网{{$value.productCom}}</span></p>
+        </div>
+    </div>
+    {{/each}}
+</script>
+<!--//创建模板-->
+<script type = "text/html" id = "someDiscuss">
+    {{each result}}
+    <div class="media">
+    <div class="media-top">
+        <div class="media-left">
+            <a href="javascript:;">
+                <img src="../images/Thumb_2015030014442314218.jpg" alt="">
+            </a>
+        </div>
+        <div class="media-right">
+            <a href="javascript:;">东芝(TOSHIBA)43U66EBC 43英寸 4K智能液晶电视</a>
+        </div>
+    </div>
+    <div class="media-bot">
+        <div class="plbox">
+
+        </div>
+        <div class="media-bot-top">
+
+            <span>{{$value.comName}}: <span>★★★★★</span></span>
+            <span>{{$value.comTime}}</span>
+        </div>
+        <p>{{$value.comContent}}</p>
+    </div>
+    </div>
+    {{/each}}
+</script>
+<script>
+    $(function () {
+            var num = localStorage.timeId;
+        $.ajax({
+            url: "http://139.199.192.48:9090/api/getbrand",
+            data: {
+                brandtitleid: num,
+            },
+            success: function (data) {
+                console.log(data);
+                var result = template("someBrand", data);
+                $(".brandName-items").append(result);
+
+                for (var i = 0; i < data.result.length; i++) {
+                    $(".num").eq(i).html(i + 1);
+                    $('.item').eq(i).attr('brandId',data.result[i].brandId);
+                    $('.item').eq(i).attr('brandName',data.result[i].brandName);
+                }
+            }
+        });
+            $(".brandName-items").on("click",".item",function() {
+//                $.cookie("branName",$(this).attr("branName"),{expires:7,path:"/"});
+                localStorage.branName = $(this).attr("branName");
+//                $.cookie("brandId",$(this).attr("brandId"),{expires:7,path:"/"});
+                localStorage.brandId = $(this).attr("brandId");
+            })
+
+        $('.brandName-items>p').html(localStorage.timeName + "哪个品牌好");
+        $("#nav .dianshi").html(localStorage.timeName + "哪个品牌好");
+
+        $.ajax({
+            url: "http://139.199.192.48:9090/api/getbrandproductlist",
+            data: {
+                brandtitleid: num,
+                limit: 4
+            },
+            success: function (data) {
+                console.log(data);
+                var result = template("someMedia", data);
+                $(".sales").append(result);
+                $('.sales .media-left').each(function (index, ele) {
+                    $(ele).html(data.result[index].productImg);
+                });
+//                $(".discuss .media-left a img").each(function (index, ele) {
+//                    $(ele).html(data.result[index].productImg);
+//                });
+                for(var i = 0; i< data.result.length;i++){
+                    productName = data.result[i].productName;
+                    $(".discuss .media-right a").eq(i).html(productName);
+                  productImg = data.result[i].productImg;
+                    $(".discuss .media-left a").eq(i).html(productImg);
+
+                    $(".sales .media").eq(i).attr("categoryId",data.result[i].productId);
+                }
+            }
+        })
+        $(".sales").on("click",".media",function() {
+            localStorage.productId = ($(this).attr("categoryId"));
+            window.location.href='DetailsPage.html'
+        })
+        $.ajax({
+                url:"http://139.199.192.48:9090/api/getproductcom",
+                data:{
+                    productid: num,
+                },
+                success:function(data) {
+                    console.log(data)
+                    var result3 =template("someDiscuss",data);
+                    $(".discuss").append(result3);
+
+                }
+        })
+
+
+    })
+</script>

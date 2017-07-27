@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        document.querySelector("html").style.fontSize = window.screen.width/10+"px";
+    </script>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"  href="../css/moneyctrl2.css">
+</head>
+<body>
+    <!--头部样式-->
+    <header class="base02">
+        <div class="left">
+            <a href="moneyctrl.html" class="icon-back">
+                <span>&lt;</span>
+            </a>
+        </div>
+        <div class="center">
+            <h1>国内折扣</h1>
+        </div>
+        <div class="right">
+            <a href="javascript:;">
+                <img src="../images/header_app.png" alt="">
+            </a>
+        </div>
+    </header>
+    <!--主体部分-->
+    <div class="guoneizhekou-container">
+    <!--<div class="guoneizhekou-content">
+        <div class="guoneizhekou-title">
+            <h3>移动端凑单品：海天 鲜味 生抽1.28L</h3>
+            <h4>159元</h4>
+        </div>
+        <div class="guoneizhekou-source">
+            <span>京东商城</span>
+            <span>10-25 14：10</span>
+            <span>小编烟火/慢慢买</span>
+            <a href="#"><span>5人评论</span></a>
+        </div>
+        <div class="guoneizhekou-info">
+            <img src="../images/2017070008184222039.jpg" alt="">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit. Vel animi ad quibusdam soluta aperiam, quos atque aliquid eveniet veritatis error sequi ea alias quasi
+                cum optio facilis deleniti, doloribus magni.</p>
+            
+        </div>
+        <div class="guoneizhekou-pic">
+            <img src="../images/2017070008184222039.jpg" alt="">
+        </div>
+        <div class="guoneizhekou-buy">
+            <a href="">
+             <input type="button" name="" value="前往购买">
+           </a>
+        </div>
+    </div>
+    <div class="guoneizhekou-discuss">
+            <p>发表评论</p>
+            <div class="fabiao">
+                <input type="text" class="textarea">
+                <input type="button" value="发表评论">
+            </div>
+            <div>
+                <p>热门评论</p>
+                <p>最新评论</p>
+                <div class="newlist">
+                    
+                </div>
+            </div>
+    </div>-->
+ </div>
+    <!--导航样式-->
+    <div id = "nav">
+        <a href="index.html">首页</a>
+        <span>&gt;</span>
+        <a href="javascript:;">省钱控</a>
+        <span>&gt;</span>
+    </div>
+<!--底部样式-->
+<fooder>
+    <div class="container-fluid">
+        <div class="row">
+            <div class = "col-xs-4">
+                <a href="javascript:void(0);">登录</a>
+            </div>
+            <div class = "col-xs-4">
+                <a href="javascript:void(0);">注册</a>
+            </div>
+            <div class = "col-xs-4">
+                <a href="javascript:void(0);">
+                    <img src="../images/top.jpg" alt="">
+                    <p>返回顶部</p>
+                </a>
+            </div>
+        </div>
+        </div>
+</fooder>
+<div class ="base-food">
+    <p>
+        <a href="javascript:;">手机APP下载</a>
+        <a href="javascript:;">慢慢卖手机版</a>
+        "--掌上比价平台"
+    </p>
+    <p>m.manmanbuy.com</p>
+</div>
+<!--底部返回-->
+<div class= "base-food-back">
+    <div id= "base-food-back-top">
+        <a href="javascript:scroll(0,0)">
+        <img src="../images/TB2WepTeb1J.eBjSszcXXbFzVXa_!!379516416.png" alt="">
+    </a>
+    </div>
+
+    <div id= "base-food-back-bot">
+        <a href="javascript:scroll(0,0)" class = "glyphicon glyphicon-circle-arrow-up">
+        </a>
+    </div>
+</div>
+<div id="shengqiankong-buycar">
+    <div class="comment">
+        <a href="#">
+            <div class="book glyphicon glyphicon-pencil"></div>
+            <p>评论</p>
+        </a>
+    </div>
+    <a href="#" class="go">
+        <div class="car glyphicon glyphicon-shopping-cart"></div>
+        <p>前往购买</p>
+    </a>
+</div>
+</body>
+</html>
+<script src="../js/jquery-1.12.4.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/template-web.js"></script>
+<script src="../js/moneyctrl2.js"></script>
+<!--定义模板-->
+<script type=text/html id="discount">
+{{each result}}
+    <div class="guoneizhekou-content">
+        <div class="guoneizhekou-title">
+            <h3>{{$value.productName}}</h3>
+            <h4>{{$value.productPinkage}}</h4>
+        </div>
+        <div class="guoneizhekou-source">
+            <span>{{$value.productFrom}}</span>
+            <span>{{$value.productTime}}</span>
+            <span>{{$value.productTips}}</span>
+            <a href="#"><span>{{$value.productComCount}}</span></a>
+        </div>
+        <div class="guoneizhekou-info">
+            {{#$value.productImgSm}}
+            <p>{{$value.productInfo2}}</p>
+            
+        </div>
+        <div class="guoneizhekou-pic">
+            {{#$value.productImg2}}
+        </div>
+        <div class="guoneizhekou-buy">
+            <a href="">
+             <input type="button" name="" value="前往购买">
+           </a>
+        </div>
+    </div>
+    <div class="guoneizhekou-discuss"> 
+       {{#$value.productComment}}
+    </div>
+    {{/each}}
+</script>

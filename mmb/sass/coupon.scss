@@ -1,0 +1,228 @@
+// 导入的顺序
+// 因为我们可能在base中会修改样式
+@import 'normalize6.0';
+// 再导入 自己的
+@import 'base';
+// 定义变量 京东红
+@function p2r($size) {
+  @return ($size/37.5*1rem);
+}
+html,body,.coupon-layout{
+  width: 100%;
+  height: 100%;
+}
+/*头部区域*/
+.base02{
+  width:100%;
+  height:p2r(44);
+  background-color: #f4483e;
+  display: flex;
+  justify-content: space-between;
+  padding-right:p2r(8);
+  .left{
+    width: p2r(50);
+    height: p2r(44);
+    a{
+      height: 100%;
+      width: 100%;
+      display: block;
+      line-height: p2r(44);
+      font-size: p2r(17);
+      color:#fff;
+      padding-left:p2r(10);
+      text-decoration:none;
+    }
+  }
+  .center{
+    height:100%;
+    h1{
+      font-size: p2r(20);
+      color:#fff;
+      font-weight: bold;
+      line-height: p2r(5);
+    }
+  }
+  .right{
+    a{
+      width: p2r(50);
+      height: p2r(44);
+      display: block;
+      img{
+        width: 60%;
+        height: 70%;
+        margin:p2r(7) auto;
+      }
+    }
+  }
+}
+/*内容区域*/
+.coupon-contaniner{
+  width: 100%;
+  //height:100%;
+
+  .coupon-box{
+    width: 100%;
+    //height:p2r(123);
+    //background-color:pink;
+    padding-top:p2r(10);
+    padding-left:p2r(5);
+    padding-right:p2r(5);
+    ul{
+      width: 100%;
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      li{
+        height:p2r(80);
+        border:1px solid #eeeeee;
+        width:32.5%;
+        margin-top:p2r(5);
+        padding-top:p2r(5);
+        a{
+          display: block;
+          width: 100%;
+          text-decoration: none;
+          //height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          img{
+            width:p2r(50);
+            height:p2r(50);
+          }
+          p{
+            font-size:p2r(12);
+            color:#000;
+          }
+        }
+      }
+    }
+  }
+}
+//返回首页
+.coupon-back{
+  width: 100%;
+  height:p2r(36);
+  border-top:1px solid #cccccc;
+  border-bottom:1px solid #cccccc;
+  padding-left:p2r(8);
+  line-height:p2r(36);
+  margin-bottom:p2r(25);
+  background:linear-gradient(to bottom,rgba(254,254,254,1),rgba(237,237,237,1));
+  //background-color: #ededed;
+  a{
+   font-size: p2r(14);
+    color: #000;
+  }
+  span{
+    font-size: p2r(14);
+    color: #000;
+  }
+}
+//底部通用样式
+fooder{
+  height: p2r(35);
+  width: 100%;
+  background-color: pink;
+  background-color: #efefef;
+  .container-fluid{
+    width: 100%;
+    height: auto;
+    background-color: #efefef;
+    .row{
+      border:1px solid #c4c4c4;
+      border-right:none;
+      border-left:none;
+      height: p2r(35);
+      overflow: hidden;
+      div{
+
+        border-right:1px solid #c4c4c4;
+      }
+    }
+    a{
+      line-height: p2r(35);
+      color:#000;
+    }
+    div:nth-of-type(1){
+      height:p2r(35);
+
+      text-align: center;
+    }
+    div:nth-of-type(2){
+      height:p2r(35);
+
+      text-align: center;
+    }
+    div:nth-of-type(3){
+      height:p2r(35);
+      border-right:0;
+      a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img{
+          height: p2r(15);
+          width: p2r(15);
+          margin-top:p2r(-10);
+        }
+        p{
+          border-bottom:1px solid gray;
+        }
+      }
+    }
+  }
+}
+.base-food{
+  height:p2r(58);
+  width: 100%;
+  border: 1px solid gray;
+  border: none;
+  padding-top:p2r(10);
+  text-align: center;
+  background-color: #efefef;
+  p{
+    margin:0 auto;
+    a:first-child{
+      color:#f00;
+    }
+    a:nth-of-type(2){
+      color:gray;
+    }
+  }
+}
+.base-food-back{
+  .base-food-back-top{
+    position: fixed;
+    bottom:p2r(60);
+    right: 0px;
+    width: p2r(60);
+    height:p2r(67);
+    a:nth-of-type(1){
+      width: 100%;
+      height: 100%;
+      display: block;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .base-food-back-bot{
+    width: p2r(44);
+    height: p2r(44);
+    position:fixed;
+    bottom:p2r(10);
+    right:p2r(8);
+
+    a:nth-of-type(1){
+      font-size: 40px;
+      line-height: p2r(44);
+      color: gray;
+    }
+  }
+
+
+}

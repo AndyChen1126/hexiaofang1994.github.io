@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        document.querySelector("html").style.fontSize = window.screen.width/10+"px";
+    </script>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../css/index.css">
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/brandTitle.css">
+    <title>Title</title>
+</head>
+<body>
+<!--头部-->
+<header class = "base01">
+    <div class = "left">
+        <a href="index.htmlff">
+            <img src="../images/header_logo.png" alt=""></a>
+    </div>
+    <div class = "right">
+        <a href="javascript:;">
+            <img src="../images/header_app.png" alt="">
+        </a>
+    </div>
+</header>
+<!--搜索-->
+<div class = "search">
+    <input type="search" placeholder="请输入你想比价的商品">
+    <input type="button" value = "搜索">
+</div>
+<!--导航-->
+<div id = "nav">
+    <a href="index.html">首页</a>
+    <span>&gt;</span>
+    <a href="brandTitle.html">全部分类</a>
+    <span>&gt;</span>
+</div>
+<!--热门品牌-->
+<div class= "hotBrand">
+        <p>热门品牌排行</p>
+</div>
+<!--内容区-->
+<div class = "items">
+</div>
+<!--底部-->
+<fooder>
+    <div class="container-fluid">
+        <div class="row">
+            <div class = "col-xs-4">
+                <a href="javascript:;">登录</a>
+            </div>
+            <div class = "col-xs-4">
+                <a href="javascript:;">注册</a>
+            </div>
+            <div class = "col-xs-4">
+                <a href="javascript:;">
+                    <img src="../images/top.jpg" alt="">
+                    <p>返回顶部</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</fooder>
+<div class ="base-food">
+    <p>
+        <a href="javascript:;">手机APP下载</a>
+        <a href="javascript:;">慢慢卖手机版</a>
+        "--掌上比价平台"
+    </p>
+    <p>m.manmanbuy.com</p>
+</div>
+<div class = "base-food-back">
+    <div class = "base-food-back-top">
+        <a href="javascript:;">
+            <img src="../images/TB2WepTeb1J.eBjSszcXXbFzVXa_!!379516416.png" alt="">
+        </a>
+    </div>
+
+    <div class = "base-food-back-bot">
+        <a href="javascript:scroll(0,0);" class = "glyphicon glyphicon-circle-arrow-up">
+        </a>
+    </div>
+</div>
+</body>
+</html>
+<script src = "../js/jquery-1.12.4.min.js"></script>
+<script src = "../js/template-web.js"></script>
+<script src = "../jquery-cookie-master/src/jquery.cookie.js"></script>
+<!--创建模板-->
+<script type = "text/html" id = "someBrand">
+    {{each result}}
+    <div class = "item">
+        <a href="brandTitle02.html">{{$value.brandTitle}}</a>
+        <a href="javascript:;" class = "glyphicon glyphicon-menu-down"></a>
+    </div>
+    {{/each}}
+</script>
+<script>
+    $(function() {
+                    $.ajax({
+                            url:"http://139.199.192.48:9090/api/getbrandtitle",
+                            success:function(data) {
+                                console.log(data);
+                                var result = template("someBrand", data);
+                                $(".items").append(result);
+                                for(var i=0;i<data.result.length;i++){
+                                    $('.item').eq(i).attr('data-id',data.result[i].brandTitleId);
+                                 $('.item').eq(i).attr('data-name',data.result[i].brandTitle);
+                                }
+                            }
+                    });
+                    $('.items').on('click','.item',function () {
+                            var str =   $(this).attr("data-name");
+                            var path = /十大品牌/g
+                            var str2 = str.replace(path,"");
+//                        $.cookie("timeName",str2,{expires:7,path:"/"});
+                        localStorage.timeName=str2;
+//                        $.cookie("timeId",$(this).attr('data-id'),{expires:7,path:"/"});
+                        localStorage.timeId=$(this).attr('data-id');
+                    });
+
+
+
+
+    })
+</script>

@@ -1,0 +1,406 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  height: auto;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #5a5a5a;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  display: block;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix::before,
+.clearfix::after {
+  content: '';
+  display: block;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+  clear: both;
+}
+
+/*
+  移动web开发,虽然浏览器的 内核 都是 webkit
+  但是不同的浏览器开发厂商 ,可能会为浏览器添加一些 特殊的 独有样式
+  为了清除不同浏览器带来的显示差异 我们有一个 比较通用的样式 normalize.css
+*/
+input {
+  outline: none;
+  border: none;
+}
+
+.bdt {
+  border-top: 1px solid #eee;
+}
+
+.bdl {
+  border-left: 1px solid #eee;
+}
+
+.bdr {
+  border-right: 1px solid #eee;
+}
+
+.bdb {
+  border-bottom: 1px solid #eee;
+}
+
+.bdcW {
+  border-color: white;
+}
+
+.base01 {
+  width: 100%;
+  height: 1.33333rem;
+  background-color: #ff841d;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.base01 .left {
+  padding-left: 0.45333rem;
+}
+.base01 .left a {
+  width: 4.96rem;
+  height: 0.66667rem;
+  display: block;
+}
+.base01 .left a img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin-top: 0.32rem;
+}
+.base01 .right {
+  padding-right: 0.18667rem;
+}
+.base01 .right a {
+  width: 0.90667rem;
+  height: 0.90667rem;
+  display: block;
+}
+.base01 .right a img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin-top: 0.18667rem;
+}
+
+.base02 {
+  width: 100%;
+  height: 1.17333rem;
+  background-color: #ff841d;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-right: 0.21333rem;
+}
+.base02 .left {
+  width: 1.33333rem;
+  height: 1.17333rem;
+}
+.base02 .left a {
+  height: 100%;
+  width: 100%;
+  display: block;
+  line-height: 1.17333rem;
+  font-size: 0.45333rem;
+  color: #fff;
+  padding-left: 0.26667rem;
+  text-decoration: none;
+}
+.base02 .center {
+  height: 100%;
+}
+.base02 .center h1 {
+  font-size: 0.53333rem;
+  color: #fff;
+  font-weight: bold;
+  line-height: 0.4rem;
+}
+.base02 .right a {
+  width: 1.33333rem;
+  height: 1.17333rem;
+  display: block;
+}
+.base02 .right a img {
+  width: 60%;
+  height: 70%;
+  margin: 0.18667rem auto;
+}
+
+fooder {
+  height: 0.93333rem;
+  width: 100%;
+  background-color: pink;
+}
+fooder .container-fluid {
+  width: 100%;
+  height: 100%;
+}
+fooder .container-fluid .row {
+  border: 1px solid gray;
+  height: 0.93333rem;
+  overflow: hidden;
+}
+fooder .container-fluid .row div {
+  border-right: 1px solid gray;
+}
+fooder .container-fluid a {
+  line-height: 0.93333rem;
+  color: #000;
+}
+fooder .container-fluid div:nth-of-type(1) {
+  height: 0.93333rem;
+  text-align: center;
+}
+fooder .container-fluid div:nth-of-type(2) {
+  height: 0.93333rem;
+  text-align: center;
+}
+fooder .container-fluid div:nth-of-type(3) {
+  height: 0.93333rem;
+  border-right: 0;
+}
+fooder .container-fluid div:nth-of-type(3) a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+fooder .container-fluid div:nth-of-type(3) a img {
+  height: 0.4rem;
+  width: 0.4rem;
+  margin-top: -0.26667rem;
+}
+fooder .container-fluid div:nth-of-type(3) a p {
+  border-bottom: 1px solid gray;
+}
+
+.base-food {
+  height: 1.54667rem;
+  width: 100%;
+  border: 1px solid gray;
+  border-top: none;
+  padding-top: 0.26667rem;
+  text-align: center;
+}
+.base-food p {
+  margin: 0 auto;
+}
+.base-food p a:first-child {
+  color: #f00;
+}
+.base-food p a:nth-of-type(2) {
+  color: gray;
+}
+
+.base-food-back .base-food-back-top {
+  position: fixed;
+  bottom: 1.6rem;
+  right: 0px;
+  width: 1.6rem;
+  height: 1.78667rem;
+}
+.base-food-back .base-food-back-top a:nth-of-type(1) {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.base-food-back .base-food-back-top a:nth-of-type(1) img {
+  width: 100%;
+  height: 100%;
+}
+.base-food-back .base-food-back-bot {
+  width: 1.17333rem;
+  height: 1.17333rem;
+  position: fixed;
+  bottom: 0.26667rem;
+  right: 0.21333rem;
+}
+.base-food-back .base-food-back-bot a:nth-of-type(1) {
+  font-size: 40px;
+  line-height: 1.17333rem;
+  color: gray;
+}
+
+#nav {
+  height: 1.06667rem;
+  width: 100%;
+  background: -webkit-linear-gradient(top, #fdfdfd, #ededed);
+  background: linear-gradient(to bottom, #fdfdfd, #ededed);
+  border-bottom: 0.08rem solid #e6e6e6;
+  padding-left: 0.18667rem;
+}
+#nav a {
+  color: #000;
+  line-height: 1.06667rem;
+}
+
+.shouye-search {
+  width: 100%;
+  height: 1.28rem;
+  border-bottom: 1px solid #e6e6e6;
+  padding-left: 0.24rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 0.21333rem;
+  margin-bottom: 0.34667rem;
+  padding-right: 0.26667rem;
+}
+.shouye-search input {
+  width: 100%;
+  height: 0.8rem;
+  background-color: #f1f1f1;
+  outline: none;
+  border-radius: 0.53333rem;
+  margin-right: 0.18667rem;
+  padding-left: 0.53333rem;
+  color: #a9a9a9;
+  border: none;
+}
+.shouye-search a {
+  width: 1.70667rem;
+  height: 0.8rem;
+  display: inline-block;
+  background-color: #ff841d;
+  border-radius: 0.53333rem;
+  font-size: 0.4rem;
+  text-align: center;
+}
+.shouye-search a span {
+  width: 100%;
+  height: 100%;
+  line-height: 0.8rem;
+  color: white;
+}
+
+.projects nav ul li {
+  padding: 0;
+  margin: 0;
+}
+.projects nav ul li a {
+  padding: 0;
+  width: 100%;
+  height: 1.06667rem;
+  line-height: 1.06667rem;
+  text-align: center;
+  color: #5a5a5a;
+}
+.projects nav ul li a.active {
+  color: red;
+  background: transparent;
+}
+.projects .list {
+  padding: 0;
+  margin-bottom: 0.53333rem;
+}
+.projects .list .media {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+.projects .list .media .goto {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+}
+.projects .list .media .media-left img {
+  width: 120px;
+}
+.projects .list .media .media-body {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.projects .list .media .media-body h4 {
+  color: #333333;
+  word-break: break-all;
+  font-size: 0.4rem;
+  line-height: 0.74667rem;
+  height: 1.49333rem;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.projects .list .media .media-body .price {
+  font-size: 0.48rem;
+  color: red;
+}
+.projects .list .media .media-body p:nth-child(3) {
+  font-size: 0.32rem;
+  color: #a1a1a1;
+}
+.projects .btns {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 0.66667rem;
+}
+.projects .btns #up {
+  width: 1.81333rem;
+}
+.projects .btns #down {
+  width: 1.81333rem;
+}
+.projects .btns .dropdown-menu {
+  width: 100%;
+  min-width: 0;
+}
+.projects .btns .dropdown-menu li a {
+  width: 100%;
+  display: block;
+}

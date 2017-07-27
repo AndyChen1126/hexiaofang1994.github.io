@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        document.querySelector("html").style.fontSize = window.screen.width / 10 + "px";
+    </script>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/skiphop.css">
+    <title>凑单品--慢慢买比价网</title>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/skiphop.js"></script>
+    <script src="../js/template-web.js"></script>
+    <script src="../jquery-cookie-master/src/jquery.cookie.js"></script>
+</head>
+<body>
+<div class="skiphop">
+    <!--顶部-->
+    <header class="base02">
+        <div class="left">
+            <a href="index.html" class="glyphicon glyphicon-menu-left">
+
+            </a>
+        </div>
+        <div class="center">
+            <h1>凑单品</h1>
+        </div>
+        <div class="right">
+            <a href="javascript:;">
+                <img src="../images/header_app.png" alt="">
+            </a>
+        </div>
+    </header>
+    <!--内容大盒子-->
+    <div class="skiphop-box">
+        <!--顶部菜单-->
+        <div class="skiphop-top">
+            <!--左边下拉菜单-->
+            <div class="skiphop-filter">
+                <ul>
+                    <li><a href="javascript:void(0)">京东&nbsp; <i class="glyphicon glyphicon-triangle-bottom"></i></a>
+                    </li>
+                    <li><a href="javascript:void(0)">华北&nbsp; <i class="glyphicon glyphicon-triangle-bottom"></i></a>
+                    </li>
+                    <li><a href="javascript:void(0)">全部价格&nbsp; <i class="glyphicon glyphicon-triangle-bottom"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <!--右边搜索-->
+            <div class="skiphop-search">
+                <i class="icon-search"></i>
+            </div>
+            <!--各种下拉-->
+            <div class="popsort popbox">
+                <ul>
+                <!--<li class="chilke"><a href="javascript:void(0)">京东</a></li>-->
+                </ul>
+            </div>
+            <div class="popprice popbox">
+                <ul></ul>
+            </div>
+            <div class="popcat popbox">
+                <ul>
+                    <li class="chilke"><a href="javascript:void(0)">全部价格</a></li>
+                    <li><a href="javascript:void(0)">1-3元</a></li>
+                    <li><a href="javascript:void(0)">3-5元</a></li>
+                    <li><a href="javascript:void(0)">5-10元</a></li>
+                    <li><a href="javascript:void(0)">10-15元</a></li>
+                    <li><a href="javascript:void(0)">15元以上</a></li>
+                </ul>
+            </div>
+            <div class="popsearch popbox">
+                <div class="formsh clearfix">
+                    <div class="txt">
+                        <input type="search" placeholder="搜索您想要的凑单品">
+                    </div>
+                    <div class="smt">
+                        <input type="button" value="搜索">
+                    </div>
+                </div>
+                <p></p>
+                <div class="select">
+                    <div class="t">排序</div>
+                    <div class="c">
+                        <dl class="clearfix">
+                            <dd class="xz"><a href="javascript:void(0)">销量</a></dd>
+                            <dd><a href="javascript:void(0)">价格↑</a></dd>
+                            <dd><a href="javascript:void(0)">价格↓</a></dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="select">
+                    <div class="t">分类</div>
+                    <div class="c">
+                        <dl class="clearfix">
+                            <dd class="xz"><a href="javascript:void(0)">全部</a></dd>
+                            <dd><a href="javascript:void(0)">家居</a></dd>
+                            <dd><a href="javascript:void(0)">数码</a></dd>
+                            <dd><a href="javascript:void(0)">办公</a></dd>
+                            <dd><a href="javascript:void(0)">个护</a></dd>
+                            <dd><a href="javascript:void(0)">食品</a></dd>
+                            <dd><a href="javascript:void(0)">母婴</a></dd>
+                            <dd><a href="javascript:void(0)">服饰</a></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--下面内容部分-->
+        <div class="skiphop-bottom clearfix">
+            <ul>
+                <!--<li>-->
+                <!--<a class="clearfix" href="javascript:void(0)">-->
+                <!--<div class="pic"><img src="" alt=""></div>-->
+                <!--<p>钱江 美味榨菜 60g/袋 酱菜榨菜下饭菜 杭州特产</p>-->
+                <!--<p>¥1.00</p>-->
+                <!--<div class="btn">去凑单</div>-->
+                <!--</a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<!--下拉框模板-->
+<script type="text/html" id="popsort">
+    {{each result}}
+        <li><a href="javascript:void(0)">{{$value.shopName}}</a></li>
+    {{/each}}
+</script>
+<script type="text/html" id="popprice">
+    {{each result}}
+        <li><a href="javascript:void(0)">{{$value.areaName}}</a></li>
+    {{/each}}
+</script>
+<!--内容部分模板-->
+<script type="text/html" id="content">
+    {{each result}}
+    <li>
+        <a class="clearfix" href="gsproduct-list.html">
+            <div class="pic"><img src="{{$value.productImg}}" alt=""></div>
+            <p>{{$value.productName}}</p>
+            <p>{{$value.productPrice}}</p>
+            <div class="btn">去凑单</div>
+        </a>
+    </li>
+    {{/each}}
+</script>

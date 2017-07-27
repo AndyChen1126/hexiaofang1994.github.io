@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>国内折扣</title>
+    <script>
+        document.querySelector("html").style.fontSize = window.screen.width / 10 + "px";
+    </script>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/inlanddiscount.css">
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <!--公共样式头部-->
+    <header class="base02">
+        <div class="left">
+            <a href="./index.html" class="glyphicon glyphicon-menu-left">
+
+        </a>
+        </div>
+        <div class="center">
+            <h1>国内折扣</h1>
+        </div>
+        <div class="right">
+            <a href="javascript:;">
+            <img src="../images/header_app.png" alt="">
+        </a>
+        </div>
+    </header>
+    <!--主体区域-->
+    <main class="national">
+        <!--整个主体区域的盒子-->
+        <div class="nat_disc">
+            <ul class="nat_disc_ul">
+                <!--<li class="nd_box fl">-->
+                <!--<a href="zhekou.aspx?id=1564249" title="三只松鼠 甘栗仁 100g *12件 57.2元（双重优惠）">-->
+                <!--<div class="pic">-->
+                <!--<img src="http://wnzk-img.zuyushop.com/r_img/img/20170703/21/807f611a6c5d478c99fc485184a6612b.jpg" alt="">-->
+                <!--</div>-->
+                <!--<div class="title">三只松鼠 甘栗仁 100g *12件 57.2元（双重优惠</div>-->
+                <!--<div class="price">39元</div>-->
+                <!--<div class="mall">天猫商城 | 2017/7/3 21:48</div>-->
+                <!--</a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </main>
+    <!--底部样式-->
+    <fooder>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-4">
+                    <a href="javascript:;">登录</a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="javascript:;">注册</a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="javascript:;">
+                    <img src="../images/top.jpg" alt="">
+                    <p>返回顶部</p>
+                </a>
+                </div>
+            </div>
+        </div>
+    </fooder>
+    <div class="base-food">
+        <p>
+            <a href="javascript:;">手机APP下载</a>
+            <a href="javascript:;">慢慢卖手机版</a> "--掌上比价平台"
+        </p>
+        <p>m.manmanbuy.com</p>
+    </div>
+    <!--底部返回-->
+    <div class="base-food-back">
+        <div class="base-food-back-top">
+            <a href="javascript:;">
+            <img src="../images/TB2WepTeb1J.eBjSszcXXbFzVXa_!!379516416.png" alt="">
+        </a>
+        </div>
+
+        <div class="base-food-back-bot">
+            <a href="javascript:scroll(0,0);" class="glyphicon glyphicon-circle-arrow-up">
+        </a>
+        </div>
+    </div>
+</body>
+
+</html>
+<!--导入js-->
+<script src="../js/jquery-1.12.4.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<!--cookie-->
+<script src="../jquery-cookie-master/jquery.cookie.js"></script>
+<!--导入模板引擎-->
+<script src="../js/template-web.js"></script>
+<!--定义模板-->
+<script type='text/html' id='moban'>
+    {{each result}}
+    <li class="nd_box bdr bdb fl">
+        <a href="./inlanddiscount_details.html" title={{#$value.productName}}>
+            <div class="pic">
+                {{@$value.productImg}}
+            </div>
+            <div class="title">{{@$value.productName}}</div>
+            <div class="price">{{@$value.productPrice}}</div>
+            <div class="mall">{{@$value.productFrom}} | {{@$value.productTime}}</div>
+        </a>
+    </li>
+    {{/each}}
+</script>
+<!--自己写的js-->
+<script>
+    $(function () {
+        getData();
+    })
+    // 判断滚轮事件
+    $(window).scroll(function () {
+        var currentScroll = $(document).scrollTop();
+        // console.log(currentScroll);
+        var currentHeight = $("body").height();
+         console.log(currentHeight);
+        if (currentScroll >= $(document).height() - $(window).height()) {
+            console.log(123);
+            getData();
+        }
+    })
+    var id;
+    // 封装成方法
+    function getData(){
+
+        $.ajax({
+            url: "http://139.199.192.48:9090/api/getinlanddiscount",
+            success: function (data) {
+                console.log(data);
+
+                var result = template("moban", data);
+                // console.log(result);
+                $('.nat_disc_ul').append(result);
+
+                for (var i = 0; i < data.result.length; i++) {
+                    $(".nat_disc_ul li:eq(" + i + ") a").attr("timeId", data.result[i].productId);
+                    // console.log($(".nat_disc_ul li:eq("+i+") a").attr('timeId'));
+                }
+                // location.href ='inlanddiscount_details.html?id='+id;
+
+                // $.cookie('timeId',$(this).attr("timeId"),{path:'/'});
+                $(".national").on("click", "a", function () {
+                    // console.log($(this));
+                    var TimeID = $(this).attr("timeId");
+                    localStorage.TimeID=TimeID;
+                    console.log(TimeID);
+                })
+            }
+        })
+    }
+</script>

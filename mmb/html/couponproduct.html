@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <script>
+        document.querySelector("html").style.fontSize = window.screen.width/10+"px";
+    </script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/index.css">
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/coupon-list-kfc.css">
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/template-web.js"></script>
+    <script src="../js/coupon/coupon-list-kfc.js"></script>
+</head>
+<body>
+<div class="coupon-listKfc-layout">
+    <!--头部区域-->
+    <header class = "base02">
+        <div class = "left">
+            <a href="./coupon.html" class = "glyphicon glyphicon-menu-left">
+            </a>
+        </div>
+        <div class = "center">
+            <h1>肯德基优惠券</h1>
+        </div>
+        <div class = "right">
+            <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.manmanbuy.bijia" >
+                <img src="../images/header_app.png" alt="">
+            </a>
+        </div>
+    </header>
+    <!--内容区域-->
+    <div class="coupon-list-kft">
+        <div class="mobile-coupon">--点餐前出示手机中的优惠券，即可享受优惠--</div>
+        <div class="coupon-list-kftContent">
+            <ul class="coupon-listKfc">
+            </ul>
+        </div>
+    </div>
+    <!--反回首页-->
+    <div class="coupon-back">
+        <a href="index.html">首页</a>
+        <span>></span>
+        <a href="quanindex.aspx">优惠券</a>
+    </div>
+    <!--底部区域-->
+    <fooder>
+        <div class="container-fluid">
+            <div class="row">
+                <div class = "col-xs-4">
+                    <a href="javascript:;">登录</a>
+                </div>
+                <div class = "col-xs-4">
+                    <a href="javascript:;">注册</a>
+                </div>
+                <div class = "col-xs-4">
+                    <a href="javascript:;">
+                        <img src="../images/top.jpg" alt="">
+                        <p>返回顶部</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </fooder>
+    <div class ="base-food">
+        <p>
+            <a href="javascript:;">手机APP下载</a>
+            <a href="javascript:;">慢慢卖手机版</a>
+            "--掌上比价平台"
+        </p>
+        <p>m.manmanbuy.com</p>
+    </div>
+    <div class = "base-food-back">
+        <div class = "base-food-back-top">
+            <a href="javascript:;">
+                <img src="../images/TB2WepTeb1J.eBjSszcXXbFzVXa_!!379516416.png" alt="">
+            </a>
+        </div>
+
+        <div class = "base-food-back-bot">
+            <a href="javascript:;" class = "glyphicon glyphicon-circle-arrow-up">
+            </a>
+        </div>
+    </div>
+    <!--遮罩层区域-->
+    <div class="galleryOverlay">
+        <div class= "galleryOverlay-container">
+            <div class="picture">
+
+            </div>
+            <span class="coupon-arrow-left"><</span>
+            <span class="coupon-arrow-right">></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/html" id="coupon-list">
+    {{each result}}
+    <li class="off_on">
+        <a href="javascript:void(0)">
+            <div class="kftcLeft-pic">{{#$value.couponProductImg}}</div>
+            <div class="kfcRight-content">
+                <p>{{$value.couponProductName}}</p>
+                <p><em>￥</em>{{$value.couponProductId}}</p>
+                <p>{{$value.couponProductTime}}</p>
+                <span class="glyphicon glyphicon-menu-right"></span>
+            </div>
+        </a>
+    </li>
+    {{/each}}
+</script>
+
+<script>
+    $(function () {
+        var changeNum;
+        var str = '';
+        $.ajax({
+            url:"http://139.199.192.48:9090/api/getcouponproduct",
+            type:"get",
+            data:{
+                couponid:localStorage.couponId
+            },
+            success:function(data){
+                console.log(data);
+                var result = template('coupon-list',data);
+                $(".coupon-listKfc").append(result);
+                //点击出现遮罩层
+                $(".coupon-listKfc").on("click",".off_on",function () {
+                    console.log($(this).index());
+                    changeNum = $(this).index();
+                    $('.galleryOverlay').fadeIn(1000).show();
+                    $('.picture').html(data.result[changeNum].couponProductImg);
+                });
+                // 点击到下一照图片
+                $('.coupon-arrow-right').click(function (e) {
+                    e.stopPropagation();
+                    changeNum++;
+                    if(changeNum>data.result.length){
+                        changeNum=0;
+                        $('.picture').html(data.result[changeNum].couponProductImg);
+                        return;
+                    }
+                    $('.picture').html(data.result[changeNum].couponProductImg);
+                })
+                // 点击到上一张照片
+                $('.coupon-arrow-left').click(function (e) {
+                    e.stopPropagation();
+
+                    changeNum--;
+                    if(changeNum<0){
+                        changeNum = data.result.length;
+                        $('.picture').html(data.result[changeNum].couponProductImg);
+                        return;
+                    }
+                    $('.picture').html(data.result[changeNum].couponProductImg);
+                })
+            }
+        });
+
+
+        //点击遮罩层消失
+        $(".galleryOverlay").on("click",function(){
+            $('.galleryOverlay').hide()
+        });
+    })
+
+</script>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        document.querySelector("html").style.fontSize = window.screen.width/10+"px";
+    </script>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/index.css">
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <title>凑单品--详情页</title>
+    <link rel="stylesheet" href="../css/skiphop.css">
+    <script src="../js/template-web.js"></script>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../jquery-cookie-master/src/jquery.cookie.js"></script>
+</head>
+<body>
+<!--头部通用-->
+<header class = "base02">
+    <div class = "left">
+        <a href="gsproduct.html" class = "glyphicon glyphicon-menu-left">
+
+        </a>
+    </div>
+    <div class = "center">
+        <h1>商品详情</h1>
+    </div>
+    <div class = "right">
+        <a href="javascript:;" >
+            <img src="../images/header_app.png" alt="">
+        </a>
+    </div>
+</header>
+
+<!--中间模板-->
+<div class="gsproduct">
+     <!--<div class="thumbnail">-->
+                <!--<img src="https://m.360buyimg.com/n12/jfs/t1468/327/1195618780/70676/4f5853ed/55c8453bNa333c0c5.jpg!q70.jpg" alt="...">-->
+                <!--<div class="caption">-->
+                    <!--&lt;!&ndash;<h3>Thumbnail label</h3>&ndash;&gt;-->
+                    <!--<p>【京东超市】博大 面条 麦芯挂面 160g （炒面 汤面 拌面 炸酱面1人份）</p>-->
+                    <!--<p>￥1.00</p>-->
+                    <!--<p><a href="javascript:void (0)" class="btn btn-warning" role="button">加入购物车</a><a href="javascript:void (0)" class="btn btn-danger" role="button">立即购买</a></p>-->
+                <!--</div>-->
+            <!--</div>-->
+</div>
+
+<!--底部样式-->
+<fooder>
+    <div class="container-fluid">
+        <div class="row">
+            <div class = "col-xs-4">
+                <a href="javascript:;">登录</a>
+            </div>
+            <div class = "col-xs-4">
+                <a href="javascript:;">注册</a>
+            </div>
+            <div class = "col-xs-4">
+                <a href="javascript:;">
+                    <img src="../images/top.jpg" alt="">
+                    <p>返回顶部</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</fooder>
+<div class ="base-food">
+    <p>
+        <a href="javascript:;">手机APP下载</a>
+        <a href="javascript:;">慢慢卖手机版</a>
+        "--掌上比价平台"
+    </p>
+    <p>m.manmanbuy.com</p>
+</div>
+<!--底部返回-->
+<div class = "base-food-back">
+    <div class = "base-food-back-top">
+        <a href="javascript:;">
+            <img src="../images/TB2WepTeb1J.eBjSszcXXbFzVXa_!!379516416.png" alt="">
+        </a>
+    </div>
+
+    <div class = "base-food-back-bot">
+        <a href="javascript:;" class = "glyphicon glyphicon-circle-arrow-up">
+        </a>
+    </div>
+</div>
+</body>
+</html>
+
+<script type="text/html" id="gsproduct-list">
+    <div class="thumbnail">
+        <img src="{{productImg}}" alt="...">
+        <div class="caption">
+            <p>{{productName}}</p>
+            <p>{{productPrice}}</p>
+            <p><a href="javascript:void (0)" class="btn btn-warning" role="button">加入购物车</a><a href="javascript:void (0)" class="btn btn-danger" role="button">立即购买</a></p>
+        </div>
+    </div>
+</script>
+<script>
+    var pi = localStorage.done
+    var ai = localStorage.dtwo
+    var si = localStorage.dthree
+    var pii = pi%26
+    $.ajax({
+        url:"http://139.199.192.48:9090/api/getgsproduct",
+        data:{
+            shopid:si,
+            areaid:ai
+        },
+        success:function (data){
+//            console.log(data.result[7].productName);
+            var rul = template("gsproduct-list",data.result[pii]);
+            $(".gsproduct").html(rul)
+        }
+    })
+</script>

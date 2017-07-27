@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+        document.querySelector("html").style.fontSize = window.screen.width / 10 + "px";
+    </script>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="" href="../css/moneyctrl.css">
+</head>
+
+<body>
+    <!--头部样式-->
+    <header class="base02">
+        <div class="left">
+            <a href="index.html" class="icon-back">
+                <span>&lt;</span>
+            </a>
+        </div>
+        <div class="center">
+            <h1>省钱控 - 最新优惠</h1>
+        </div>
+        <div class="right">
+            <a href="javascript:;">
+                <img src="../images/header_app.png" alt="">
+            </a>
+        </div>
+    </header>
+    <!--主体内容部分-->
+    <div class="shengqiankong-content">
+        <ul class="shengqiankong-items">
+            <!--<li class="shengqiankong-item">
+                 <a href="javascript:void(0)">
+                    <div class="pic">
+                        <img src="images/2017070020020442652.jpg" alt="">
+                    </div> 
+                    <div class="info">
+                        <div class="title">
+                            WHALEY 微鲸 W55J2 55英寸 4K液晶电视 <span>3498元包邮（下单立减）</span>
+                        </div>
+                        <div class="other">
+                             <span class="mark">京东商城 | 07-03 22:16</span>
+                             <span class="comment">
+                                 <i class=" glyphicon glyphicon-comment"></i>
+                                  1
+                             </span>
+                        </div>
+                    </div>      
+                 </a>
+             </li>
+             <li class="item">
+
+             </li>-->
+        </ul>
+    </div>
+    <!--分页码-->
+    <div class="shengqiankong-pagination">
+        <a href="javascript:scroll(0,0);" class="shengqiankong-previous"><input type="button" name="" value="上一页"></a>
+        <select></select>
+        <a href="javascript:scroll(0,0);" class="shengqiankong-next"><input type="button" name="" value="下一页"></a>
+    </div>
+    <!--导航样式-->
+    <div id="nav">
+        <a href="index.html">首页</a>
+        <span>&gt;</span>
+        <a href="javascript:;">省钱控</a>
+        <span>&gt;</span>
+    </div>
+    <!--底部样式-->
+    <fooder>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-4">
+                    <a href="javascript:void(0);">登录</a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="javascript:void(0);">注册</a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="javascript:void(0);">
+                    <img src="../images/top.jpg" alt="">
+                    <p>返回顶部</p>
+                </a>
+                </div>
+            </div>
+        </div>
+    </fooder>
+    <div class="base-food">
+        <p>
+            <a href="javascript:;">手机APP下载</a>
+            <a href="javascript:;">慢慢卖手机版</a> "--掌上比价平台"
+        </p>
+        <p>m.manmanbuy.com</p>
+    </div>
+    <!--底部返回-->
+    <div class="base-food-back">
+        <div class="base-food-back-top">
+            <a href="javascript:;">
+        <img src="../images/TB2WepTeb1J.eBjSszcXXbFzVXa_!!379516416.png" alt="">
+    </a>
+        </div>
+
+        <div class="base-food-back-bot">
+            <a href="javascript:scroll(0,0);" class="glyphicon glyphicon-circle-arrow-up">
+        </a>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="../js/jquery-1.12.4.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/template-web.js"></script>
+<script src="../js/moneyctrl.js"></script>
+<!--定义省钱控模板-->
+<script type="text/html" id="shengqiankong">
+    {{each result}}
+    <li class="shengqiankong-item">
+        <a href="moneyctrl2.html" class="item">
+            <div class="pic">
+                {{#$value.productImgSm}}
+            </div>
+            <div class="info">
+                <div class="title">
+                    {{$value.productName}}<span>{{$value.productPinkage}}</span>
+                </div>
+                <div class="other">
+                    <span class="mark">{{$value.productFrom}} | {{$value.productTime}}</span>
+                    <span class="comment">
+                                 <i class=" glyphicon glyphicon-comment"></i>
+                                  {{$value.productComCount}}
+                    </span>
+                </div>
+            </div>
+        </a>
+    </li>
+    {{/each}}
+</script>
+
